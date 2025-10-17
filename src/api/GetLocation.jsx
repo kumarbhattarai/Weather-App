@@ -9,7 +9,7 @@ export default function GetLocation() {
       fetch(`https://api.weatherapi.com/v1/current.json?key=77ab82ed6c7640f3b7575820251710&q=${query}&aqi=yes`)
         .then((res) => res.json())
         .then((data) => {
-            console.log("Fetched weather data:", data);
+            
           setWeather({
             city: data.location.name,
             temperature: data.current.temp_c,
@@ -20,7 +20,7 @@ export default function GetLocation() {
             airQuality: data.current.air_quality,
             icon: data.current.condition.icon,
           });
-          console.log("Weather state updated:", weather.airQuality);
+      
         })
         .catch((err) => console.error("Error fetching weather:", err));
     };
@@ -36,7 +36,7 @@ export default function GetLocation() {
         (err) => console.error("Error getting location:", err)
       );
     }
-  }, [weather.city, setWeather]);
+  }, [weather.city]);
 
   return null;
 }
